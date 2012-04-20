@@ -9,6 +9,7 @@
     "url": "git://github.com/babelon/lie-to-me.git"
   },
   "main": "lib/server.js",
+  "private": true,
   "dependencies": {
     "express": "~2.5.9",
     "mongoose": "~2.6.0"
