@@ -1,0 +1,21 @@
+{
+  "author": "Zahan Malkani <zahanm@babelon.co> (http://zahanm.com)",
+  "name": "lie-to-me",
+  "description": "game pitting liars against each other",
+  "version": "0.0.1-alpha",
+  "homepage": "http://liars.babelon.co",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/babelon/lie-to-me.git"
+  },
+  "main": "lib/server.js",
+  "dependencies": {
+    "express": "~2.5.9",
+    "mongoose": "~2.6.0"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "~0.6.14"
+  }
+}
