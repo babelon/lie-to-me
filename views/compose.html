@@ -18,8 +18,8 @@
           <form class="form-vertical" action="/savereview" method="post" accept-charset="utf-8">
             <label>
               <h2>Review this business: {{business}}</h2>
-              <textarea name="review" placeholder="Pour your heart out here.." rows="6">
-              </textarea>
+              <input type="hidden" name="business_id" value="{{business_id}}">
+              <textarea name="review" placeholder="Pour your heart out here.." rows="6"></textarea>
             </label>
             <button type="submit" class="btn btn-primary btn-large">review &rarr;</button>
             <a class="btn btn-large" href="/">back</a>
