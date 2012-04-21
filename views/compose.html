@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- seo -->
+  <title>writing</title>
+  <meta name="description" content="a game to distinguish lies from truth" >
+  <meta name="keywords" content="meaning,language,lies,truth">
+  <!-- styles -->
+  <link rel="stylesheet" href="/styles/compose.css" type="text/css" media="screen,handheld" charset="utf-8">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <section class="span8 offset2">
+        <div class="hero-unit">
+          <form class="form-vertical" action="/savereview" method="post" accept-charset="utf-8">
+            <label>
+              <h2>Review this business: {{business}}</h2>
+              <textarea name="review" placeholder="Pour your heart out here.." rows="6">
+              </textarea>
+            </label>
+            <button type="submit" class="btn btn-primary btn-large">review &rarr;</button>
+            <a class="btn btn-large" href="/">back</a>
+          </form>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
