@@ -17,17 +17,34 @@
         <div class="hero-unit">
           <h2>Do you think that this review is a lie or a truth?</h2>
           <p>
-            {{ review }}
+            {{ fragment }}
           </p>
-          <a class="btn btn-success btn-large">
-            truth
-          </a>
-          <a class="btn btn-inverse btn-large">
-            lie
-          </a>
+          <form class="form-inline" action="/vote" method="post" accept-charset="utf-8">
+            <input type="hidden" name="fragment_id" value="{{ fragment_id }}">
+            <input type="hidden" name="truth" id="input-truth" value="false">
+            <button class="btn btn-success btn-large">
+              truth
+            </button>
+            <button class="btn btn-inverse btn-large">
+              lie
+            </button>
+          </form>
         </div>
       </section>
     </div>
   </div>
+  <script type="text/javascript" charset="utf-8">
+    var buttons = document.querySelectorAll('.form-inline > button');
+    Array.prototype.forEach.call(buttons, function(button) {
+      button.addEventListener('click', function(ev) {
+        var truth = document.getElementById('input-truth');
+        if (ev.target.innerText == 'truth') {
+          truth.value = 'true';
+        } else {
+          truth.value = 'false';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
