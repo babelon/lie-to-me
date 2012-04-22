@@ -29,13 +29,13 @@ p1.save(function(err, d) {
     // Make two businesses
     b1 = new Entity({
       name: 'Mantra',
-      address: '123 University Ave, Palo Alto, CA'
+      website: 'http://www.mantrapa.com/'
     })
     b1.save(function(err, d) {
       if (err) { console.error(err); }
       b2 = new Entity({
         name: 'Sushi Tomo',
-        address: '420 Bryant Ave, San Francisco, CA'
+        website: 'http://www.yelp.com/biz/sushi-tomo-palo-alto-2/'
       })
       b2.save(function(err, d) {
         if (err) { console.error(err); }
