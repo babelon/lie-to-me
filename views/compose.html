@@ -16,19 +16,21 @@
       <section class="span8 offset2">
         <div class="hero-unit">
           <form class="form-vertical" action="/savefragment" method="post" accept-charset="utf-8">
-            <label>
+            <label for="input-fragment">
               <h2>Review this business: {{ entity }}</h2>
-              <input type="hidden" name="entity_id" value="{{ entity_id }}">
-              <label class="radio inline">
-                <input type="radio" name="truth" value="true">
-                true
-              </label>
-              <label class="radio inline">
-                <input type="radio" name="truth" value="false" checked>
-                false
-              </label>
-              <textarea name="fragment" placeholder="Pour your heart out here.." rows="6"></textarea>
             </label>
+            <input type="hidden" name="entity_id" value="{{ entity_id }}">
+            <label class="radio inline">
+              <input type="radio" name="truth" value="true">
+              true
+            </label>
+            <label class="radio inline">
+              <input type="radio" name="truth" value="false" checked>
+              false
+            </label>
+            <p>
+              <textarea name="fragment" placeholder="Pour your heart out here.." rows="6" id="input-fragment"></textarea>
+            </p>
             <button type="submit" class="btn btn-primary btn-large">review &rarr;</button>
             <a class="btn btn-large" href="/">back</a>
           </form>
