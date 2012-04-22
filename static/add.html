@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- seo -->
+  <title>lie to me</title>
+  <meta name="description" content="a game to distinguish lies from truth" >
+  <meta name="keywords" content="meaning,language,lies,truth">
+  <!-- styles -->
+  <link rel="stylesheet" href="/styles/thanks.css" type="text/css" media="screen,handheld" charset="utf-8">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <section class="span8 offset2">
+        <div class="hero-unit">
+          <h2>Add an entity</h2>
+          <form class="form-vertical" action="/saveentity" method="post" accept-charset="utf-8">
+            <label>
+              What is name of this business?
+              <input type="text" name="name" placeholder="The name, please.." required>
+            </label>
+            <label>
+              <input type="url" name="website" placeholder="And the website">
+            </label>
+            <button type="submit" class="btn btn-primary">add &rarr;</button>
+            <a class="btn" href="/">back</a>
+          </form>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
