@@ -50,12 +50,13 @@ p1.save(function(err, d) {
           if (err) { console.error(err); }
           r2 = new Fragment({
             entity: b2,
-            text: 'The sushi here is freaking amazong! Thank you for the help.',
+            text: 'Rolls here are pretty good. I went here on a date and the atmosphere wasn’t really what I expect. Normally for sushi I anticipate a smaller, Asian-style restaurant, but this seemed more American. Sushi itself was pretty good. Fish seemed pretty fresh and had some cool, unique rolls. Overall, I would for sure come back with a bunch of friends, but definitely not for a date. Also, would like to try things besides the sushi because they seemed pretty interesting. For sushi, had a very good price point. Point of note: make sure to understand what is in the crab rolls before ordering because some are imitation crab and some are real crab.',
             author: p2,
             truth: false
           });
           r2.save(function(err, d) {
-            console.log('all done loading into db')
+            console.log('all done loading into db');
+            process.exit(0);
           });
         });
       });
