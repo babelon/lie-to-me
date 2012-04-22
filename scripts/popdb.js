@@ -13,7 +13,7 @@ Person = Mongoose.model('Person');
 Vote = Mongoose.model('Vote');
 
 // Make two people
-var p1, p2;
+var p1, p2, b1, b2, r1, r2;
 p1 = new Person({
   name: 'Brian Tolkin',
   email: 'brian@babelon.co'
@@ -27,7 +27,6 @@ p1.save(function(err, d) {
   p2.save(function(err, d) {
     if (err) { console.error(err); }
     // Make two businesses
-    var  b1, b2;
     b1 = new Entity({
       name: 'Mantra',
       address: '123 University Ave, Palo Alto, CA'
@@ -41,7 +40,6 @@ p1.save(function(err, d) {
       b2.save(function(err, d) {
         if (err) { console.error(err); }
         // And two reviews
-        var r1, r2;
         r1 = new Fragment({
           entity: b1,
           text: 'Casual Indian food restaurant that is frankly just not that good. The food was just meh, the service was only OK, and the menu seemed limiting. I know other people have had good experiences here, but I would definitely go to other Indian restaurants in Palo Alto over this one.',

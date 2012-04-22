@@ -17,8 +17,8 @@
         <div class="hero-unit">
           <form class="form-vertical" action="/savefragment" method="post" accept-charset="utf-8">
             <label>
-              <h2>Review this business: {{business}}</h2>
-              <input type="hidden" name="entity_id" value="{{entity_id}}">
+              <h2>Review this business: {{ entity }}</h2>
+              <input type="hidden" name="entity_id" value="{{ entity_id }}">
               <textarea name="review" placeholder="Pour your heart out here.." rows="6"></textarea>
             </label>
             <button type="submit" class="btn btn-primary btn-large">review &rarr;</button>
