@@ -15,9 +15,16 @@
     <div class="row">
       <section class="span8 offset2">
         <div class="hero-unit">
-          <a class="btn btn-primary btn-large fb-login-button" href="/login">
+          {{#person}}
+          <a class="btn btn-large auth-btn" href="/logout">
+            Logout
+          </a>
+          {{/person}}
+          {{^person}}
+          <a class="btn btn-primary btn-large auth-btn" href="/login">
             Login with Facebook
           </a>
+          {{/person}}
           <h1>Lie To Me!</h1>
           <p>
             You can either be a guesser or a writer. Pick one.
