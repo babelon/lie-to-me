@@ -1,8 +1,8 @@
 
 (function() {
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-30638441-1']);
-  _gaq.push(['_setDomainName', 'lietome.babelon.co']);
+  _gaq.push(['_setAccount', 'UA-30638441-2']);
+  _gaq.push(['_setDomainName', 'babelon.co']);
   _gaq.push(['_trackPageview']);
 
   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
