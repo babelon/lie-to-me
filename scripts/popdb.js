@@ -12,18 +12,19 @@ Entity = Mongoose.model('Entity');
 Person = Mongoose.model('Person');
 Vote = Mongoose.model('Vote');
 
-// Make two people
 var b1, b2, r1, r2;
 
 // Make two businesses
 b1 = new Entity({
   name: 'Mantra',
+  etype: 'restaurant',
   website: 'http://www.mantrapa.com/'
 })
 b1.save(function(err, d) {
   if (err) { console.error(err); }
   b2 = new Entity({
     name: 'Sushi Tomo',
+    etype: 'restaurant',
     website: 'http://www.yelp.com/biz/sushi-tomo-palo-alto-2/'
   })
   b2.save(function(err, d) {
