@@ -28,6 +28,7 @@
           </a>
           {{/person}}
           <h1>Lie To Me!</h1>
+          {{#person}}
           <p>
             You can either be a guesser or a writer. Pick one.
           </p>
@@ -37,6 +38,10 @@
           <a class="btn btn-info btn-large" href="/compose">
             writer
           </a>
+          {{/person}}
+          {{^person}}
+          <p>A game about truth and deception. With friends.</p>
+          {{/person}}
         </div>
       </section>
     </div>
