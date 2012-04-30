@@ -8,6 +8,11 @@ async = require('async');
 _ = require('underscore');
 Mongoose = require('mongoose');
 
+invocation.version('0.0.1')
+          .option('-m, --model <modelname>', 'collection to populate')
+          .option('-f, --file <filename>', 'csv file to pull data from')
+          .parse(process.argv);
+
 Mongoose.connect('mongodb://localhost/lietome');
 require( path.resolve( __dirname, '../lib/models') ).define(null);
 
@@ -17,11 +22,6 @@ Models = {
   'Person': Mongoose.model('Person'),
   'Vote': Mongoose.model('Vote')
 };
-
-invocation.version('0.0.1')
-          .option('-m, --model <modelname>', 'collection to populate')
-          .option('-f, --file <filename>', 'csv file to pull data from')
-          .parse(process.argv);
 
 var lines, header, Model;
 
