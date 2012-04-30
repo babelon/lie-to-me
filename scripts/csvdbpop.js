@@ -5,6 +5,7 @@ fs = require('fs');
 path = require('path');
 invocation = require('commander');
 async = require('async');
+_ = require('underscore');
 Mongoose = require('mongoose');
 
 Mongoose.connect('mongodb://localhost/lietome');
@@ -41,16 +42,67 @@ fs.readFile( invocation.file, function(err, contents) {
   lines = String(contents).split('\n');
   header = lines.shift().split(',');
   async.forEachLimit(lines, 5, function(l, next) {
-    var vals, bag, m;
-    vals = l.split(',');
+    // horrible, HACKY quoted csv parsing
+    // use single quotes in csv file if needed
+    var vals, bag, m, quoted_pat, match;
+    vals = []
+    quoted_pat = /"(.*?)"[,$]/;
+    while ( true ) {
+      if (l[0] == '"') {
+        match = quoted_pat.exec(l);
+        vals.push( match[1] );
+        l = l.substr( match[0].length );
+        if (!l) { break; }
+      } else {
+        end = l.indexOf(',');
+        if (end != -1) {
+          vals.push( l.substring(0, end) );
+          l = l.substr( end + 1 );
+        } else {
+          vals.push( l.substring(0, l.length) );
+          break;
+        }
+      }
+    }
+    if (header.length != vals.length) {
+      console.error(' CSV parsing error:', header, vals);
+      process.exit(1);
+    }
     bag = {};
-    vals.forEach(function(v, i) {
-      bag[ header[i] ] = v;
-    });
-    m = new Model( bag );
-    m.save(function(err) {
-      if (err) { console.error('db error: ', err); }
-      next();
+    async.forEachSeries( _.zip(header, vals), function(hv, nextval) {
+
+      // bag construction
+      hv[0] = hv[0].trim();
+      hv[1] = hv[1].trim();
+      if (!!hv[1]) {
+        switch (hv[0]) {
+          case 'NOTE':
+            nextval();
+            break;
+          case 'tier':
+          case 'year':
+          case 'rating':
+            bag[ hv[0] ] = Number(hv[1]);
+            nextval();
+            break;
+          default:
+            bag[ hv[0] ] = hv[1];
+            nextval();
+        }
+      } else {
+        nextval();
+      }
+
+    }, function(err) {
+      if (err) { console.error('db error: ', err); process.exit(1); }
+
+      // model creation
+      m = new Model( bag );
+      m.save(function(err) {
+        if (err) { console.error('db error: ', err); }
+        next();
+      });
+
     });
   }, function(err) {
     if (err) { console.error('db error: ', err); process.exit(1); }
