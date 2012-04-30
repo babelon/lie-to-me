@@ -12,10 +12,10 @@ Mongoose.connect('mongodb://localhost/lietome');
 require( path.resolve( __dirname, '../lib/models') ).define(null);
 
 Models = {
-  Fragment: Mongoose.model('Fragment'),
-  Entity: Mongoose.model('Entity'),
-  Person: Mongoose.model('Person'),
-  Vote: Mongoose.model('Vote')
+  'Fragment': Mongoose.model('Fragment'),
+  'Entity': Mongoose.model('Entity'),
+  'Person': Mongoose.model('Person'),
+  'Vote': Mongoose.model('Vote')
 };
 
 invocation.version('0.0.1')
@@ -44,14 +44,15 @@ fs.readFile( invocation.file, function(err, contents) {
   async.forEachLimit(lines, 5, function(l, next) {
     // horrible, HACKY quoted csv parsing
     // use single quotes in csv file if needed
-    var vals, bag, m, quoted_pat, match;
+    var vals, bag, m, end;
     vals = []
     quoted_pat = /"(.*?)"[,$]/;
     while ( true ) {
       if (l[0] == '"') {
-        match = quoted_pat.exec(l);
-        vals.push( match[1] );
-        l = l.substr( match[0].length );
+        l = l.substr(1);
+        end = l.indexOf('"');
+        vals.push( l.substring(0, end) );
+        l = l.substr( end + 2 );
         if (!l) { break; }
       } else {
         end = l.indexOf(',');
@@ -84,6 +85,20 @@ fs.readFile( invocation.file, function(err, contents) {
           case 'rating':
             bag[ hv[0] ] = Number(hv[1]);
             nextval();
+            break;
+          case 'author':
+            Models['Person'].findOne( { 'email': hv[1] }, function(err, person) {
+              if (err || !person) { console.error('db error: ', err, hv[1], person); }
+              bag[ hv[0] ] = person._id;
+              nextval();
+            });
+            break;
+          case 'entity':
+            Models['Entity'].findOne( { 'name': hv[1] }, function(err, entity) {
+              if (err || !entity) { console.error('db error: ', err, hv[1], entity); }
+              bag[ hv[0] ] = entity._id;
+              nextval();
+            });
             break;
           default:
             bag[ hv[0] ] = hv[1];
