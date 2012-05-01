@@ -91,7 +91,13 @@ fs.readFile( invocation.file, function(err, contents) {
             nextval();
             break;
           case 'truth':
-            bag[ hv[0] ] = !!hv[1].match(/true/i);
+            if ( !!hv[1].match(/true/i) ) {
+              bag[ hv[0] ] = true;
+            } else if ( !!hv[1].match(/false/i) ) {
+              bag[ hv[0] ] = false;
+            } else {
+              console.error('boolean value error: ', hv[1]);
+            }
             nextval();
             break;
           case 'author':
