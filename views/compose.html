@@ -17,7 +17,7 @@
     {{#reply}}
     <div class="row">
       <section class="span8 offset2">
-        <div class="alert alert-block alert-{{#success}}success{{/success}}{{^success}}error{{/success}}">
+        <div class="alert alert-block alert-{{#success}}success{{/success}}{{^success}}danger{{/success}}">
           <h4 class="alert-heading">{{#success}}Nice{{/success}}{{^success}}Oh Noes{{/success}}!</h4>
           {{{ text }}}
         </div>
@@ -48,7 +48,7 @@
           <form class="form-inline" action="/compose" method="get" accept-charset="utf-8">
             <input type="hidden" name="entity_id" value="{{ entity_id }}">
             <input type="hidden" name="experience" id="input-experience" value="false">
-            <button class="btn btn-success btn-large">
+            <button class="btn btn-primary btn-large">
               yes
             </button>
             <button class="btn btn-inverse btn-large">
