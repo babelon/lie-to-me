@@ -86,6 +86,10 @@ fs.readFile( invocation.file, function(err, contents) {
             bag[ hv[0] ] = Number(hv[1]);
             nextval();
             break;
+          case 'created':
+            bag[ hv[0] ] = new Date();
+          case 'truth':
+            bag[ hv[0] ] = hv[1].match(/true/i);
           case 'author':
             Models['Person'].findOne( { 'email': hv[1] }, function(err, person) {
               if (err || !person) { console.error('db error: ', err, hv[1], person); }
