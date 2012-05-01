@@ -27,6 +27,9 @@
     <div class="row">
       <section class="span8 offset2">
         <div class="hero-unit">
+          <a class="btn auth-btn" href="/logout">
+            Logout
+          </a>
           {{#truthknown}}
           <form class="form-vertical" action="/compose" method="post" accept-charset="utf-8">
             <h2>{{ title }}</h2>
@@ -38,7 +41,7 @@
               <textarea name="fragment" placeholder="Pour your heart out here.." rows="6" id="input-fragment" required></textarea>
             </p>
             <button type="submit" class="btn btn-primary btn-large">review &rarr;</button>
-            <a class="btn btn-large" href="/">back</a>
+            <a class="btn btn-large" href="/guess">skip</a>
           </form>
           {{/truthknown}}
           {{^truthknown}}
