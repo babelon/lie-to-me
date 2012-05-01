@@ -39,6 +39,33 @@
             </label>
             <input type="hidden" name="entity_id" value="{{ entity_id }}">
             <input type="hidden" name="truth" value="{{ statement_truth }}">
+            
+            <p>
+              Star Rating
+              <span class=star-rating-group>
+                <label class="rating">
+                  <input name="star-rating" type="radio" value="1" checked />
+                  <i class="icon-star"></i>
+                </label>
+                <label class="rating">
+                  <input name="star-rating" type="radio" value="2" />
+                  <i class="icon-star-empty"></i>
+                </label>
+                <label class="rating">
+                  <input name="star-rating" type="radio" value="3" />
+                  <i class="icon-star-empty"></i>
+                </label>
+                <label class="rating">
+                  <input name="star-rating" type="radio" value="4" />
+                  <i class="icon-star-empty"></i>
+                </label>
+                <label class="rating">
+                  <input name="star-rating" type="radio" value="5" />
+                  <i class="icon-star-empty"></i>
+                </label>
+              </span>
+            </p>
+            
             <p>
               <textarea name="fragment" placeholder="Pour your heart out here.." rows="6" id="input-fragment" required></textarea>
             </p>
@@ -75,6 +102,16 @@
         } else {
           truth.value = 'false';
         }
+      });
+    });
+    var star_inputs = document.querySelectorAll('.rating input[type=radio]:enabled');
+    var stars = document.querySelectorAll('.star-rating-group i');
+    Array.prototype.forEach.call(star_inputs, function(star_input) {
+      star_input.addEventListener('click', function(ev) {
+        var rating, i;
+        rating = Number(ev.target.value);
+        for (i = 0; i < rating; i++) { stars[i].className = "icon-star"; }
+        for (i = rating; i < stars.length; i++) { stars[i].className = "icon-star-empty"; }
       });
     });
   </script>
