@@ -14,34 +14,35 @@
 </head>
 <body>
   <div class="container">
+    {{#person}}
+    <a class="btn auth-btn" href="/logout">
+      Logout
+    </a>
+    {{/person}}
     <div class="row">
       <section class="span8 offset2">
         <div class="hero-unit">
-          {{#person}}
-          <a class="btn btn-large auth-btn" href="/logout">
-            Logout
-          </a>
-          {{/person}}
-          {{^person}}
-          <a class="btn btn-primary btn-large auth-btn" href="/login">
-            Login with Facebook
-          </a>
-          {{/person}}
-          <h1>Lie To Me!</h1>
-          {{#person}}
+          <h1 style="text-align: center;">The Deception Game</h1>
           <p>
-            You can either be a guesser or a writer. Pick one.
+            Are you a good liar?<br />
+            Think you can spot one?
           </p>
-          <a class="btn btn-info btn-large" href="/guess">
-            guesser
-          </a>
-          <a class="btn btn-info btn-large" href="/compose">
-            writer
-          </a>
-          {{/person}}
-          {{^person}}
-          <p>A game about truth and deception. With friends.</p>
-          {{/person}}
+          <p style="text-align: right;">
+            Let's find out how discerning you are...<br />
+            and how deceptive you can be.
+          </p>
+          <p style="text-align: center;">
+            {{#person}}
+            <a class="btn btn-large btn-primary" href="/guess">
+              start playing
+            </a>
+            {{/person}}
+            {{^person}}
+            <a class="btn btn-primary btn-large" href="/login">
+              Login with Facebook
+            </a>
+            {{/person}}
+          </p>
         </div>
       </section>
     </div>
