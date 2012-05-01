@@ -29,11 +29,10 @@
         <div class="hero-unit">
           {{#truthknown}}
           <form class="form-vertical" action="/compose" method="post" accept-charset="utf-8">
+            <h2>{{ title }}</h2>
             <label for="input-fragment">
-              <!-- triple mustache for unescaped html -->
-              <h2>{{ title }}</h2>
+              <p>{{{ statement_requested }}}</p>
             </label>
-            <p>{{{ statement_requested }}}</p>
             <input type="hidden" name="entity_id" value="{{ entity_id }}">
             <p>
               <textarea name="fragment" placeholder="Pour your heart out here.." rows="6" id="input-fragment" required></textarea>
@@ -43,8 +42,7 @@
           </form>
           {{/truthknown}}
           {{^truthknown}}
-          <!-- triple mustache for unescaped html -->
-          <h2>Have you ever {{actioned}} {{{ entity }}}?</h2>
+          <p>Have you ever {{actioned}} {{{ entity }}}?</p>
           <form class="form-inline" action="/compose" method="get" accept-charset="utf-8">
             <input type="hidden" name="entity_id" value="{{ entity_id }}">
             <input type="hidden" name="experience" id="input-experience" value="false">
