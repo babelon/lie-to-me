@@ -15,9 +15,14 @@
 <body>
   <div class="container">
     {{#person}}
-    <a class="btn auth-btn" href="/logout">
-      Logout
-    </a>
+    <div class="right-box">
+      <a class="btn auth-btn" href="/logout">
+        Logout
+      </a>
+      <span class="points-box label label-inverse">
+        {{points}} points
+      </span>
+    </div>
     {{/person}}
     <div class="row">
       <section class="span8 offset2">

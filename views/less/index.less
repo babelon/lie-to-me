@@ -3,12 +3,16 @@
 @import "bootstrap.less";
 @import "responsive.less";
 
-.container:first-child {
-  margin-top: 40px;
-}
+/* logout button */
 
 .auth-btn {
   float: right;
+}
+
+/* hero tweaks */
+
+.container:first-child {
+  margin-top: 40px;
 }
 
 .hero-unit {
@@ -56,3 +60,26 @@
 .rating input[type=radio] {
   display: none;
 }
+
+/* points box */
+
+@right-box-size: 100px;
+.right-box {
+  float: right;
+  width: @right-box-size;
+}
+.auth-btn {
+  width: @right-box-size - 20px;
+}
+.points-box {
+  display: inline-block;
+  width: @right-box-size - 8px;
+  margin-top: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
