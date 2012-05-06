@@ -15,6 +15,7 @@ lib-cov
 
 pids
 results
+changelog
 
 node_modules
 npm-debug.log
