@@ -40,8 +40,7 @@ actions = [
   function(callback) { Store.sadd('tweeners_wrong', [ 'Better luck with this one...', 'Give it another shot...', 'Keep trying...', 'Try again...' ], callback); },
   function(callback) { Store.sadd('tweeners_transition', [ "And now for something completely different.", "Try this for a change." ], callback); },
   // creating a hash map, args in format => { field1: val1, field2: val2 }
-  function(callback) { Store.hmset('reply_alert_type', { 'true': 'success', 'false': 'danger', 'composed': 'info', 'exhausted': 'warning' }, callback); },
-  function(callback) { Store.hmset('etypes_actioned', { 'restaurant': 'been to', 'other_food': 'been to', 'movie': 'seen', 'tv_show': 'watched', 'book': 'read', 'place': 'visited', 'residence': 'lived in', 'song': 'listened to' }, callback); }
+  function(callback) { Store.hmset('reply_alert_type', { 'true': 'success', 'false': 'danger', 'composed': 'info', 'exhausted': 'warning' }, callback); }
 ];
 
 async.forEach(actions, function(action, next) {
