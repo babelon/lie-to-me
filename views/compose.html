@@ -26,8 +26,11 @@
     {{/person}}
     {{#reply}}
     <div class="row">
-      <section class="span8 offset2">
-        <div class="alert alert-block alert-{{ alert_type }}">
+      <section class="span8 offset2 reply alert alert-block alert-{{ alert_type }}">
+        <div class="span1 picture">
+          {{{ picture }}}
+        </div>
+        <div class="span6">
           <h4 class="alert-heading">{{ leader }}</h4>
           <p>{{{ text }}}</p>
           <p><em>{{ tweener }}</em></p>

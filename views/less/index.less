@@ -3,17 +3,40 @@
 @import "bootstrap.less";
 @import "responsive.less";
 
+/* page layout */
+.container:first-child {
+  margin-top: 40px;
+}
+
 /* logout button */
 
 .auth-btn {
   float: right;
 }
 
-/* hero tweaks */
+/* reply up top */
 
-.container:first-child {
-  margin-top: 40px;
+.reply {
+  margin-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
+
+.reply .picture {
+  vertical-align: top;
+}
+
+.reply img {
+  .square(@gridColumnWidth);
+  .box-shadow(0 8px 8px -5px @grayDarker);
+  .border-radius(4px);
+}
+
+.reply p {
+  margin-bottom: 0;
+}
+
+/* hero tweaks */
 
 .hero-unit {
   background-color: @white;
