@@ -57,6 +57,7 @@
               <textarea name="fragment" placeholder="Pour your heart out here.." rows="6" id="input-fragment" required></textarea>
             </p>
             <p style="text-align: right;">
+              <span id="word-count">0</span>
               <button type="submit" class="btn btn-primary btn-large">review &rarr;</button>
               <a class="btn btn-large" href="/guess">skip</a>
             </p>
@@ -79,7 +80,9 @@
       </section>
     </div>
   </div>
+  <script src="/scripts/index.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript" charset="utf-8">
+    // yes / no buttons
     var buttons = document.querySelectorAll('.form-inline > button');
     Array.prototype.forEach.call(buttons, function(button) {
       button.addEventListener('click', function(ev) {
@@ -93,6 +96,7 @@
         }
       });
     });
+    // stars
     var star_inputs = document.querySelectorAll('.rating input[type=radio]:enabled');
     var stars = document.querySelectorAll('.star-rating-group i');
     Array.prototype.forEach.call(star_inputs, function(star_input) {
@@ -103,6 +107,18 @@
         for (i = rating; i < stars.length; i++) { stars[i].className = "icon-star-empty"; }
       });
     });
+    // fragment word count
+    var fragment = document.querySelector('textarea[name=fragment]');
+    var wc = document.querySelector('#word-count');
+    if (fragment && wc) {
+      var count = Utilities.count_words(fragment.value);
+      wc.innerText = wc.innerText && String(count);
+      wc.textContent = wc.textContent && String(count);
+    } else if (fragment || wc) {
+      console.warn('Either fragment or word-count box is uninitialized.');
+      console.warn(fragment);
+      console.warn(wc);
+    }
   </script>
 </body>
 </html>
