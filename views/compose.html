@@ -53,7 +53,7 @@
               Your experience was
               {{{ stars }}}
             </p>
-            <p>
+            <p class="control-group">
               <textarea name="fragment" placeholder="Pour your heart out here.." rows="6" id="input-fragment" required></textarea>
             </p>
             <p style="text-align: right;">
@@ -67,7 +67,7 @@
           <p class="well">Have you ever {{actioned}} {{{ entity }}}?</p>
           <form class="form-inline" action="/compose" method="get" accept-charset="utf-8">
             <input type="hidden" name="entity_id" value="{{ entity_id }}">
-            <input type="hidden" name="experience" id="input-experience" value="false">
+            <input type="hidden" name="truth" id="input-truth" value="false">
             <button class="btn btn-primary btn-large">
               yes
             </button>
@@ -81,44 +81,5 @@
     </div>
   </div>
   <script src="/scripts/index.js" type="text/javascript" charset="utf-8"></script>
-  <script type="text/javascript" charset="utf-8">
-    // yes / no buttons
-    var buttons = document.querySelectorAll('.form-inline > button');
-    Array.prototype.forEach.call(buttons, function(button) {
-      button.addEventListener('click', function(ev) {
-        var truth, known;
-        truth = document.getElementById('input-experience');
-        known = ev.target.innerText || ev.target.textContent;
-        if (known == 'yes') {
-          truth.value = 'true';
-        } else {
-          truth.value = 'false';
-        }
-      });
-    });
-    // stars
-    var star_inputs = document.querySelectorAll('.rating input[type=radio]:enabled');
-    var stars = document.querySelectorAll('.star-rating-group i');
-    Array.prototype.forEach.call(star_inputs, function(star_input) {
-      star_input.addEventListener('click', function(ev) {
-        var rating, i;
-        rating = Number(ev.target.value);
-        for (i = 0; i < rating; i++) { stars[i].className = "icon-star"; }
-        for (i = rating; i < stars.length; i++) { stars[i].className = "icon-star-empty"; }
-      });
-    });
-    // fragment word count
-    var fragment = document.querySelector('textarea[name=fragment]');
-    var wc = document.querySelector('#word-count');
-    if (fragment && wc) {
-      var count = Utilities.count_words(fragment.value);
-      wc.innerText = wc.innerText && String(count);
-      wc.textContent = wc.textContent && String(count);
-    } else if (fragment || wc) {
-      console.warn('Either fragment or word-count box is uninitialized.');
-      console.warn(fragment);
-      console.warn(wc);
-    }
-  </script>
 </body>
 </html>
