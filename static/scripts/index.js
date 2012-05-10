@@ -51,7 +51,7 @@
   fragment = document.querySelector('textarea[name=fragment]');
   wc = document.querySelector('#word-count');
   submit = fragment.form.querySelector('button[type=submit]');
-  var minwords = 15;
+  var minwords = 30;
   if (fragment && wc) {
     fragment.addEventListener('keyup', function(ev) {
       var count = Utilities.countWords(fragment.value);
