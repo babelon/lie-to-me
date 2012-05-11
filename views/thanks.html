@@ -14,6 +14,30 @@
 </head>
 <body>
   <div class="container">
+    {{#person}}
+    <div class="right-box">
+      <a class="btn auth-btn" href="/logout">
+        Logout
+      </a>
+      <span class="points-box label label-inverse">
+        {{points}} points
+      </span>
+    </div>
+    {{/person}}
+    {{#reaction}}
+    <div class="row">
+      <section class="span8 offset2 reply alert alert-block alert-{{ alert_type }}">
+        <div class="span1 picture">
+          {{{ picture }}}
+        </div>
+        <div class="span6">
+          <h4 class="alert-heading">{{ leader }}</h4>
+          <p>{{{ text }}}</p>
+          <p><em>{{ tweener }}</em></p>
+        </div>
+      </section>
+    </div>
+    {{/reaction}}
     <div class="row">
       <section class="span8 offset2">
         <div class="hero-unit">
