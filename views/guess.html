@@ -24,9 +24,22 @@
       </span>
     </div>
     {{/person}}
+    {{#notification}}
+    <div class="row">
+      <section class="span8 offset2 message alert alert-block alert-{{ alert_type }}">
+        <div class="span1 picture">
+          {{{ picture }}}
+        </div>
+        <div class="span6">
+          <h4 class="alert-heading">{{ leader }}</h4>
+          {{{ text }}}
+        </div>
+      </section>
+    </div>
+    {{/notification}}
     {{#reaction}}
     <div class="row">
-      <section class="span8 offset2 reply alert alert-block alert-{{ alert_type }}">
+      <section class="span8 offset2 message alert alert-block alert-{{ alert_type }}">
         <div class="span1 picture">
           {{{ picture }}}
         </div>
