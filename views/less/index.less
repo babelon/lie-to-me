@@ -16,23 +16,27 @@
 
 /* reply up top */
 
-.reply {
+.message {
   margin-bottom: 0;
   padding-left: 0;
   padding-right: 0;
 }
 
-.reply .picture {
+.message h4.alert-heading {
+  margin-bottom: 6px;
+}
+
+.message .picture {
   vertical-align: top;
 }
 
-.reply img {
+.message img {
   .square(@gridColumnWidth);
   .box-shadow(0 8px 8px -5px @grayDarker);
   .border-radius(4px);
 }
 
-.reply p {
+.message p {
   margin-bottom: 0;
 }
 
@@ -123,9 +127,11 @@
   float: right;
   width: @right-box-size;
 }
+
 .auth-btn {
   width: @right-box-size - 20px;
 }
+
 .points-box {
   display: inline-block;
   width: @right-box-size - 8px;
