@@ -50,7 +50,7 @@
   var fragment, wc, submit;
   fragment = document.querySelector('textarea[name=fragment]');
   wc = document.querySelector('#word-count');
-  submit = fragment.form.querySelector('button[type=submit]');
+  submit = fragment && fragment.form.querySelector('button[type=submit]');
   var minwords = 30;
   if (fragment && wc) {
     fragment.addEventListener('keyup', function(ev) {
