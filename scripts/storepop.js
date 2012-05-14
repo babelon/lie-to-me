@@ -33,8 +33,8 @@ actions = [
   function(callback) { Store.sadd('tweeners_right', [ 'Keep up the good work!', "Here's another:", "You're on a roll!", "Keep it up!" ], callback); },
   function(callback) { Store.sadd('tweeners_wrong', [ 'Better luck with this one...', 'Give it another shot...', 'Keep trying...', 'Try again...' ], callback); },
   function(callback) { Store.sadd('tweeners_transition', [ "And now for something completely different.", "Try this for a change." ], callback); },
-  function(callback) { Store.sadd('notification_truth', [ "<p>Poor {{{ voter }}} was too paranoid in classifying your truthful statement about {{{ entity }}}</p>", "<p>Untrusting {{{ voter }}} thought your truthful statement about {{{ entity }}} was deceptive.</p>" ], callback); },
-  function(callback) { Store.sadd('notification_deception', [ "<p>You got {{{ voter }}}!<br />{{ pronoun }} thought your statement about {{{ entity }}} was trustworthy.</p>", "<p>Gullible {{{ voter }}} fell for your trap!<br />{{ pronoun }} misclassified your deceptive statement about {{{ entity }}}</p>" ], callback); },
+  function(callback) { Store.sadd('notification_truth', [ "<p>Poor {{{ voter }}} was too paranoid in classifying your truthful statement about {{{ entity }}}.</p>", "<p>Untrusting {{{ voter }}} thought your truthful statement about {{{ entity }}} was deceptive.</p>" ], callback); },
+  function(callback) { Store.sadd('notification_deception', [ "<p>You got {{{ voter }}}!<br />{{ pronoun }} thought your statement about {{{ entity }}} was trustworthy.</p>", "<p>Gullible {{{ voter }}} fell for your trap!<br />{{ pronoun }} misclassified your deceptive statement about {{{ entity }}}.</p>" ], callback); },
   // creating a hash map, args in format => { field1: val1, field2: val2 }
   function(callback) { Store.hmset('reply_alert_type', { 'true': 'success', 'false': 'danger', 'composed': 'info', 'exhausted': 'warning' }, callback); }
 ];
