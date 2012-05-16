@@ -114,28 +114,36 @@
 (function(exports) {
 
   var pointSnippetStart, pointSnippetEnd, points, pointpairs, animationoptions;
-  pointSnippetStart = '<span class="points-surround"><span class="points">';
-  pointSnippetEnd = '</span></span>';
+  pointSnippetStart = '<span class="points">';
+  pointSnippetEnd = '</span>';
   animationoptions = { 'easing': 'linear', 'duration': 200 };
 
-  function setupPairs (domnode) {
-    points = domnode.querySelectorAll('.points-box .points');
+  function setupPoints (domnode) {
+    var holder, value, digits, point, i;
+    holder = domnode.querySelector('.points-box .points-holder');
+    value = holder.dataset.points;
+    digits = String(value).split('');
+    points = [];
+    digits.forEach(function(d) {
+      point = domnode.createElement('span');
+      point.className = 'points-surround';
+      point.innerHTML = pointSnippetStart + d + pointSnippetEnd;
+      holder.appendChild(point);
+      points.push(point.firstChild);
+    });
     pointpairs = Array.prototype.map.call(points, function(p) {
       return p.cloneNode(true);
     });
   }
-  exports.setupPairs = setupPairs;
+  exports.setupPoints = setupPoints;
 
   function getPointValue () {
-    var value, facevalue, base, i;
-    value = 0;
-    base = 1;
-    for (i = points.length - 1; i >= 0; i--) {
-       facevalue = Number( Utilities.getText( points[i].parentNode ? points[i]: pointpairs[i] ) );
-       value += facevalue * base;
-       base *= 10;
+    var value, i;
+    value = '';
+    for (i = 0; i < points.length; i++) {
+       value += Utilities.getText( points[i].parentNode ? points[i]: pointpairs[i] );
     }
-    return value;
+    return Number(value);
   }
   exports.getPointValue = getPointValue;
 
@@ -214,7 +222,7 @@ $(document).ready(function() {
   Initers.buttons(document);
   Initers.stars(document);
   Initers.fragments(document);
-  Points.setupPairs(document);
+  Points.setupPoints(document);
   var bs = document.querySelectorAll('.test-button')
   Array.prototype.forEach.call(bs, function(b) {
     b.addEventListener('click', function(ev) {
