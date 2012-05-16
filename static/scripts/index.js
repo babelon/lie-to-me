@@ -73,4 +73,4 @@
     console.warn(wc);
   }
 
-}).call(window);
+})();
