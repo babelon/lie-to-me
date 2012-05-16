@@ -19,9 +19,11 @@
       <a class="btn auth-btn" href="/logout">
         Logout
       </a>
-      <span class="points-box label label-inverse">
-        {{points}} points
-      </span>
+      <div class="points-box">
+        <span>Points</span>
+        <div class="points-holder" data-points="{{ points }}">
+        </div>
+      </div>
     </div>
     {{/person}}
     <div class="row">
