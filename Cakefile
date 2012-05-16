@@ -27,17 +27,18 @@ task 'csswatch', 'build css and watch for changes', (options) ->
           stats.mtime.getTime() is prevStats.mtime.getTime()
         prevStats = stats
         compile_less options
-  # compile_less options
+  compile_less options
   console.info "watching for changes on #{src}"
 
 # -- helpers
 
 compile_less = (options) ->
+  now = new Date()
   fname = path.basename src, '.less'
-  console.info "lessc #{src} > #{styles_dir}/#{fname}.css"
+  console.info "#{ now.toTimeString() } -- lessc #{src} > #{styles_dir}/#{fname}.css"
   exec "lessc #{src} > #{styles_dir}/#{fname}.css", (err, stdo, stde) ->
     console.error err, stde, stdo if err != null
   if options.compress
-    console.info "lessc --compress #{src} > #{styles_dir}/#{fname}.min.css"
+    console.info "#{ now.toTimeString() } -- lessc --compress #{src} > #{styles_dir}/#{fname}.min.css"
     exec "lessc --compress #{src} > #{styles_dir}/#{fname}.min.css", (err, stdo, stde) ->
       console.error err, stde, stdo if err != null
