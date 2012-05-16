@@ -188,18 +188,30 @@
   function changeByOne(increase, callback) {
     if (!points.length) { callback(); return; }
     if (!callback) { callback = increase; increase = true; }
-    var value, digitstochange, base, complete, i;
+    var value, change, base, complete, i, point, holder;
     value = getPointValue();
-    digitstochange = 1;
-    base = 10;
+    change = 1;
+    digits = String(value).split('').map(function(d) { return Number(d); });
     if (increase) {
-      while (value % base === base - 1) { digitstochange += 1; base *= 10; }
+      while (change < digits.length && digits[ digits.length - change ] === 9) {
+        change += 1;
+      }
     } else {
-      while (value % base === 0) { digitstochange += 1; base *= 10; }
+      while (change < digits.length && digits[ digits.length - change ] === 0) {
+        change += 1;
+      }
     }
-    complete = _.after(digitstochange, callback);
-    for (i = points.length - 1; i >= points.length - digitstochange; i--){
+    complete = _.after(change, callback);
+    for (i = points.length - 1; i >= points.length - change; i--){
       changeDigit(increase, i, complete);
+    }
+    if (change === digits.length) {
+      // need to add another digit
+      point = createPointNode(1);
+      holder = document.querySelector('.points-box .points-holder');
+      holder.insertBefore(point, holder.firstChild);
+      points.unshift(point.firstChild);
+      pointpairs.unshift(points[0].cloneNode(true));
     }
   }
   exports.changeByOne = changeByOne;
