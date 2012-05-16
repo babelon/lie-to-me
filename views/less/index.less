@@ -8,12 +8,6 @@
   margin-top: 40px;
 }
 
-/* logout button */
-
-.auth-btn {
-  float: right;
-}
-
 /* reply up top */
 
 .message {
@@ -123,25 +117,41 @@
 
 /* points box */
 
-@right-box-size: 100px;
+@right-box-size: 150px;
 .right-box {
   float: right;
   width: @right-box-size;
+  text-align: center;
 }
 
 .auth-btn {
-  width: @right-box-size - 20px;
+  width: @right-box-size - 70px;
 }
 
 .points-box {
-  display: inline-block;
-  width: @right-box-size - 8px;
+  display: block;
+  width: @right-box-size;
   margin-top: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
   font-size: inherit;
   line-height: inherit;
   font-weight: inherit;
+  background-color: @grayDark;
+  color: @white;
+  vertical-align: baseline;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  .border-radius(3px);
+}
+
+.points-holder {
+}
+
+.points-box .points {
+  display: inline-block;
+  font-size: 20px;
+  padding: 6px;
+  margin-left: 1px;
+  #gradient > .vertical-three-colors(@grayDark, @gray, 30%, @grayDark);
 }
 
