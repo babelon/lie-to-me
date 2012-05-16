@@ -121,7 +121,7 @@
   function setupPoints (domnode) {
     var holder, value, digits, point, i;
     holder = domnode.querySelector('.points-box .points-holder');
-    value = holder.dataset.points;
+    value = getPersistedPoints() || Number(holder.dataset.points);
     digits = String(value).split('');
     points = [];
     digits.forEach(function(d) {
@@ -132,6 +132,7 @@
     pointpairs = Array.prototype.map.call(points, function(p) {
       return p.cloneNode(true);
     });
+    changeBy( Number(holder.dataset.points) - value );
   }
   exports.setupPoints = setupPoints;
 
@@ -151,6 +152,16 @@
     return Number(value);
   }
   exports.getPointValue = getPointValue;
+
+  function persistPoints (value) {
+    if (!window.localStorage) { console.error('No localStorage to persist points'); return; }
+    localStorage.setItem( 'deception:points', String(value) );
+  }
+
+  function getPersistedPoints () {
+    if (!window.localStorage) { console.error('No localStorage to persist points'); return; }
+    return Number(localStorage.getItem( 'deception:points' ));
+  }
 
   function changeDigit (increase, digit, callback) {
     var frompoint, topoint, pointvalue, surround, height, complete;
@@ -218,10 +229,12 @@
 
   // can be negative deltas too
   function changeBy (delta, callback) {
+    if (!callback) { callback = Utilities.emptyFn; }
     var increase, value;
     value = getPointValue();
     targetValue = value + Number(delta);
     if (targetValue === value) { callback(); return; }
+    persistPoints(targetValue);
     increase = targetValue > value;
     function recursive() {
       value = increase ? value + 1: value - 1;
@@ -240,12 +253,4 @@ $(document).ready(function() {
   Initers.stars(document);
   Initers.fragments(document);
   Points.setupPoints(document);
-  var bs = document.querySelectorAll('.test-button')
-  Array.prototype.forEach.call(bs, function(b) {
-    b.addEventListener('click', function(ev) {
-      Points.changeBy(5, function() {
-        console.debug('changed by 5');
-      });
-    });
-  });
 });
