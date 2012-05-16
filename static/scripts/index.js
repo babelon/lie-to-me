@@ -116,7 +116,7 @@
   var pointSnippetStart, pointSnippetEnd, points, pointpairs, animationoptions;
   pointSnippetStart = '<span class="points-surround"><span class="points">';
   pointSnippetEnd = '</span></span>';
-  animationoptions = { 'easing': 'linear', 'duration': 400 };
+  animationoptions = { 'easing': 'linear', 'duration': 200 };
 
   function setupPairs (domnode) {
     points = domnode.querySelectorAll('.points-box .points');
@@ -191,6 +191,22 @@
   }
   exports.changeByOne = changeByOne;
 
+  // can be negative deltas too
+  function changeBy (delta, callback) {
+    var increase, value;
+    value = getPointValue();
+    targetValue = value + delta;
+    if (targetValue === value) { callback(); return; }
+    increase = targetValue > value;
+    function recursive() {
+      value = increase ? value + 1: value - 1;
+      if (value === targetValue) { callback(); }
+      else { changeByOne(increase, recursive); }
+    }
+    changeByOne(increase, recursive);
+  }
+  exports.changeBy = changeBy;
+
 })(window.Points = {});
 
 // called onready -- jquery dep
@@ -202,8 +218,8 @@ $(document).ready(function() {
   var bs = document.querySelectorAll('.test-button')
   Array.prototype.forEach.call(bs, function(b) {
     b.addEventListener('click', function(ev) {
-      Points.changeByOne(true, function() {
-        console.debug('changed by one');
+      Points.changeBy(5, function() {
+        console.debug('changed by 5');
       });
     });
   });
