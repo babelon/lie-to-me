@@ -15,10 +15,19 @@ task 'css', 'build css from less bootstrap', (options) ->
 
 task 'csswatch', 'build css and watch for changes', (options) ->
   fs.mkdir styles_dir
-  fs.watch src, { }, (ev) ->
-    if (ev == 'change')
-      compile_less options
-  compile_less options
+  fs.stat src, (err, prevStats) ->
+    throw err if err
+    watcher = fs.watch src, callback = (ev) ->
+      watcher.close()
+      try  # if source no longer exists, never mind
+        watcher = fs.watch src, callback
+      fs.stat src, (err, stats) ->
+        throw err if err
+        return if stats.size is prevStats.size and
+          stats.mtime.getTime() is prevStats.mtime.getTime()
+        prevStats = stats
+        compile_less options
+  # compile_less options
   console.info "watching for changes on #{src}"
 
 # -- helpers
