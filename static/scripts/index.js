@@ -38,8 +38,8 @@
   }
   exports.setText = setText;
 
-  function emptyFn () {}
-  exports.emptyFn;
+  emptyFn = function() {};
+  exports.emptyFn = emptyFn;
 
 })(window.Utilities = {});
 
@@ -205,7 +205,7 @@
     for (i = points.length - 1; i >= points.length - change; i--){
       changeDigit(increase, i, complete);
     }
-    if (change === digits.length) {
+    if (change === digits.length && increase && digits[0] === 9) {
       // need to add another digit
       point = createPointNode(1);
       holder = document.querySelector('.points-box .points-holder');
