@@ -220,7 +220,7 @@
   function changeBy (delta, callback) {
     var increase, value;
     value = getPointValue();
-    targetValue = value + delta;
+    targetValue = value + Number(delta);
     if (targetValue === value) { callback(); return; }
     increase = targetValue > value;
     function recursive() {
