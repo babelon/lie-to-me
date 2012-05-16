@@ -127,7 +127,7 @@
   exports.setupPairs = setupPairs;
 
   function changeDigit (increase, digit, callback) {
-    var frompoint, topoint, surround, height, complete;
+    var frompoint, topoint, pointvalue, surround, height, complete;
     if ( points[digit].parentNode ) {
       frompoint = points[digit];
       topoint = pointpairs[digit];
@@ -135,7 +135,12 @@
       frompoint = pointpairs[digit];
       topoint = points[digit];
     }
-    Utilities.setText( topoint, ( Number( Utilities.getText(frompoint) ) + 1 ) % 10 );
+    pointvalue = Number( Utilities.getText(frompoint) );
+    if (increase) { Utilities.setText( topoint, ( pointvalue + 1 ) % 10 ); }
+    else {
+      pointvalue -= 1;
+      Utilities.setText( topoint, pointvalue < 0 ? pointvalue + 10 : pointvalue );
+    }
     surround = frompoint.parentNode;
     height = Utilities.getTotalElementHeight(frompoint);
     topoint.style.top = height;
@@ -156,7 +161,8 @@
 
   function changeByOne(increase, callback) {
     if (!points.length) { callback(); return; }
-    changeDigit(true, points.length - 1, callback || Utilities.emptyFn);
+    if (!callback) { callback = increase; increase = true; }
+    changeDigit(increase, points.length - 1, callback);
   }
   exports.changeByOne = changeByOne;
 
