@@ -126,6 +126,19 @@
   }
   exports.setupPairs = setupPairs;
 
+  function getPointValue () {
+    var value, facevalue, base, i;
+    value = 0;
+    base = 1;
+    for (i = points.length - 1; i >= 0; i--) {
+       facevalue = Number( Utilities.getText( points[i].parentNode ? points[i]: pointpairs[i] ) );
+       value += facevalue * base;
+       base *= 10;
+    }
+    return value;
+  }
+  exports.getPointValue = getPointValue;
+
   function changeDigit (increase, digit, callback) {
     var frompoint, topoint, pointvalue, surround, height, complete;
     if ( points[digit].parentNode ) {
@@ -162,7 +175,19 @@
   function changeByOne(increase, callback) {
     if (!points.length) { callback(); return; }
     if (!callback) { callback = increase; increase = true; }
-    changeDigit(increase, points.length - 1, callback);
+    var value, digitstochange, base, complete, i;
+    value = getPointValue();
+    digitstochange = 1;
+    base = 10;
+    if (increase) {
+      while (value % base === base - 1) { digitstochange += 1; base *= 10; }
+    } else {
+      while (value % base === 0) { digitstochange += 1; base *= 10; }
+    }
+    complete = _.after(digitstochange, callback);
+    for (i = points.length - 1; i >= points.length - digitstochange; i--){
+      changeDigit(increase, i, complete);
+    }
   }
   exports.changeByOne = changeByOne;
 
