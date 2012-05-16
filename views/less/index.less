@@ -144,14 +144,22 @@
   .border-radius(3px);
 }
 
-.points-holder {
+.points-box .points-holder {
+}
+
+.points-box .points-surround {
+  display: inline-block;
+  overflow: hidden;
+  margin-left: 1px;
 }
 
 .points-box .points {
   display: inline-block;
+  position: relative;
+  top: 0;
   font-size: 20px;
+  width: 11px;
+  height: 18px;
   padding: 6px;
-  margin-left: 1px;
   #gradient > .vertical-three-colors(@grayDark, @gray, 30%, @grayDark);
 }
-

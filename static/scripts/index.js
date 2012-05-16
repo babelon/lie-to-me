@@ -14,6 +14,18 @@
   }
   exports.triggerEvent = triggerEvent;
 
+  function getTotalElementHeight (el) {
+    var styles, heightAttrs, v, total;
+    heightAttrs = [ 'marginTop', 'paddingTop', 'height', 'marginBottom', 'paddingBottom' ];
+    styles = window.getComputedStyle(el, null);
+    total = heightAttrs.reduce(function(runningSum, attr) {
+      v = styles[attr];
+      return runningSum + Number(v.slice(0, v.length - 2));
+    }, 0);
+    return String(total) + 'px';
+  }
+  exports.getTotalElementHeight = getTotalElementHeight;
+
 })(window.Utilities = {});
 
 // Handlers
@@ -84,9 +96,46 @@
 
 })(window.Initers = {});
 
+// jquery dep
+(function(exports) {
+
+  var pointSnippetStart, pointSnippetEnd
+  pointSnippetStart = '<span class="points-surround"><span class="points">';
+  pointSnippetEnd = '</span></span>';
+
+  function changeByOne(increase, callback) {
+    var points, surround, changingPoint, height;
+    points = document.querySelectorAll('.points-box .points');
+    if (!points.length) { callback(); return; }
+    changingPoint = points[ points.length - 1 ];
+    surround = changingPoint.parentNode;
+    height = Utilities.getTotalElementHeight(changingPoint);
+    $(changingPoint).animate({
+      top: '-' + height,
+    }, {
+      'easing': 'linear',
+      'duration': 2000
+    });
+    $(changingPoint).promise().done(function() {
+      surround.removeChild(changingPoint);
+      callback();
+    });
+  }
+  exports.changeByOne = changeByOne;
+
+})(window.Points = {});
+
 // called onready -- jquery dep
 $(document).ready(function() {
   Initers.buttons(document);
   Initers.stars(document);
   Initers.fragments(document);
+  var bs = document.querySelectorAll('.test-button')
+  Array.prototype.forEach.call(bs, function(b) {
+    b.addEventListener('click', function(ev) {
+      Points.changeByOne(true, function() {
+        console.debug('changed by one');
+      });
+    });
+  });
 });
