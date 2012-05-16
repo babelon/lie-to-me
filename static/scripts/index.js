@@ -125,9 +125,7 @@
     digits = String(value).split('');
     points = [];
     digits.forEach(function(d) {
-      point = domnode.createElement('span');
-      point.className = 'points-surround';
-      point.innerHTML = pointSnippetStart + d + pointSnippetEnd;
+      point = createPointNode(d);
       holder.appendChild(point);
       points.push(point.firstChild);
     });
@@ -136,6 +134,13 @@
     });
   }
   exports.setupPoints = setupPoints;
+
+  function createPointNode (digit) {
+    var point = document.createElement('span');
+    point.className = 'points-surround';
+    point.innerHTML = pointSnippetStart + String(digit) + pointSnippetEnd;
+    return point;
+  }
 
   function getPointValue () {
     var value, i;
