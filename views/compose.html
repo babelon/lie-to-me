@@ -15,15 +15,21 @@
 <body>
   <div class="container">
     {{#person}}
-    <div class="right-box">
+    <div class="right-box pull-right">
       <a class="btn auth-btn" href="/logout">
         Logout
       </a>
-      <div class="points-box">
+      <div class="points-box rounded-box">
         <span>Points</span>
         <div class="points-holder" data-points="{{ points }}">
         </div>
       </div>
+      {{#streak}}
+      <div class="streak-box rounded-box">
+        <p>Guessing Streak</p>
+        <p class="streak-number">{{streak}}</p>
+      </div>
+      {{/streak}}
     </div>
     {{/person}}
     {{#notification}}

@@ -115,33 +115,45 @@
   text-align: center;
 }
 
-/* points box */
+/* top boxes */
+@top-boxes-size: 170px;
 
-@right-box-size: 150px;
+.rounded-box {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  .border-radius(3px);
+  text-align: center;
+}
+
+.streak-box {
+  width: @top-boxes-size;
+  margin-top: 10px;
+  background-color: darken(@orange, 5%);
+  color: @white;
+}
+
+.streak-box .streak-number {
+  font-size: 20px;
+}
+
 .right-box {
-  float: right;
-  width: @right-box-size;
+  position: absolute;
+  top: 50px;
+  right: 60px;
+  width: @top-boxes-size;
   text-align: center;
 }
 
 .auth-btn {
-  width: @right-box-size - 70px;
+  width: 80px;
 }
 
 .points-box {
-  display: block;
-  width: @right-box-size;
+  width: @top-boxes-size;
   margin-top: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  font-size: inherit;
-  line-height: inherit;
-  font-weight: inherit;
   background-color: @grayDark;
   color: @white;
-  vertical-align: baseline;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  .border-radius(3px);
 }
 
 .points-box .points-holder {
