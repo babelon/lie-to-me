@@ -16,9 +16,10 @@ actions = [
   function(callback) { Store.set('star_3_statement_request', "You've never {{actioned}} {{{ entity }}}? Well, pretend that you have, and thought it was average.", callback); },
   function(callback) { Store.set('star_2_statement_request', "You've never {{actioned}} {{{ entity }}}? Well, pretend that you have, and thought you thought it was pretty bad.", callback); },
   function(callback) { Store.set('star_1_statement_request', "You've never {{actioned}} {{{ entity }}}? Well, pretend that you have. And that you hated it.", callback); },
-  function(callback) { Store.set('prob_continuation_compose', 0.4, callback); },
+  function(callback) { Store.set('prob_continuation_compose', 0.6, callback); },
   function(callback) { Store.set('points_correct_guess', 10, callback); },
   function(callback) { Store.set('points_compose', 15, callback); },
+  function(callback) { Store.set('points_deceive', 20, callback); },
   // create a de-duped set, which we can fetch a random value
   function(callback) { Store.sadd('leaders_right', [ 'Awesome!', 'Awesome!', 'Groovy!', 'Excellent!', 'Great!', 'Great!', 'Good job!', 'Fantastic!', 'Tubular!', 'Gnarly, dude!', 'Sweet!', 'Woo-hoo!', 'Hooray!', 'Splendid!', 'Fantastic!', 'Bravo!', 'Huzzah!', 'Well done!', 'Well done!' ], callback); },
   function(callback) { Store.sadd('leaders_wrong', [ 'Yikes!', 'Uh-oh!', 'Oops!', 'Whoops!', 'Gah!', 'Ouch!', 'Bummer!' ], callback); },
