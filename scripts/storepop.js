@@ -25,6 +25,7 @@ actions = [
   function(callback) { Store.sadd('leaders_wrong', [ 'Yikes!', 'Uh-oh!', 'Oops!', 'Whoops!', 'Gah!', 'Ouch!', 'Bummer!' ], callback); },
   function(callback) { Store.sadd('leaders_composed', ['Thanks!', 'Thank you!'], callback); },
   function(callback) { Store.sadd('leaders_notification', ['Sneaky!', 'Cunning!', 'Wily Coyote!', 'Devious!', 'Shifty!'], callback); },
+  function(callback) { Store.sadd('leaders_summary', ['Guess what?', 'In other news..', 'And then:', 'In this case,'], callback); },
   function(callback) { Store.sadd('truth_guessed_truth', [ '<p>You called it. That was the genuine article.<br />{{{ author }}} was being sincere.</p>', '<p>You were right. {{{ author }}} was, in fact, telling the truth.</p>', '<p>{{{ author }}} was indeed being genuine.</p>' ], callback); },
   function(callback) { Store.sadd('truth_guessed_lies', [ "<p>A bit too paranoid, there.<br />{{{ author }}} was actually telling the truth.</p>", "<p>That was really an authentic statement from {{{ author }}}.</p>" ], callback); },
   function(callback) { Store.sadd('lies_guessed_truth', [ "<p>Don't believe everything you read.<br />{{{ author }}} has never even {{actioned}} {{{entity}}}!</p>", "<p>That was a scam. You fell right into {{{ author }}}'s trap!</p>" ], callback); },
