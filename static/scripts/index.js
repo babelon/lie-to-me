@@ -121,6 +121,7 @@
   function setupPoints (domnode) {
     var holder, value, digits, point, i;
     holder = domnode.querySelector('.points-box .points-holder');
+    if (!holder) { return; }
     value = getPersistedPoints() || Number(holder.dataset.points);
     digits = String(value).split('');
     points = [];
