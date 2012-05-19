@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- seo -->
+  <title>The Deception Game</title>
+  <meta name="description" content="a game to distinguish lies from truth" >
+  <meta name="keywords" content="meaning,language,lies,truth">
+  <!-- styles -->
+  <link rel="stylesheet" href="/styles/index.css" type="text/css" media="screen,handheld" charset="utf-8">
+  <!-- google analytics -->
+  <script src="/scripts/analytics.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+  <div class="container">
+    {{#person}}
+    <div class="right-box pull-right">
+      <a class="btn auth-btn" href="/logout">
+        Logout
+      </a>
+      <div class="points-box rounded-box">
+        <span>Points</span>
+        <div class="points-holder" data-points="{{ points }}">
+        </div>
+      </div>
+      {{#streak}}
+      <div class="streak-box rounded-box">
+        <p>Guessing Streak</p>
+        <p class="streak-number">{{streak}}</p>
+      </div>
+      {{/streak}}
+    </div>
+    {{/person}}
+    <div class="row">
+      <div class="span8 offset2 header">
+        <h1>While you were away</h1>
+      </div>
+    </div>
+    {{#summaries}}
+    <div class="row summary">
+      <div class="well message span8 offset2 {{feedback}}">
+        <div class="span1 picture">
+          {{{ picture }}}
+        </div>
+        <div class="span6">
+          <h4 class="heading">{{ leader }}</h4>
+          {{{ text }}}
+        </div>
+      </div>
+    </div>
+    {{/summaries}}
+  </div>
+  <!-- scripts -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/scripts/underscore-min-1.3.3.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/scripts/index.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
