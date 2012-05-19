@@ -38,10 +38,12 @@
 
 .summary > .success {
   background-color: @successBackground;
+  border: 1px solid @successBorder;
 }
 
 .summary > .failure {
   background-color: @errorBackground;
+  border: 1px solid @errorBorder;
 }
 
 .header h1 {
@@ -154,7 +156,7 @@
 }
 
 .right-box {
-  position: absolute;
+  position: fixed;
   top: 50px;
   right: 60px;
   width: @top-boxes-size;
