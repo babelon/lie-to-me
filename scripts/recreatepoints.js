@@ -23,9 +23,11 @@ function done () {
 
 function clearPoints (callback) {
   Store.keys('*_points', function(err, replies) {
+    if (err) { console.error(err); return; }
     async.forEachSeries(replies, function(point, next) {
       Store.del(point, next);
     }, function(err) {
+      if (err) { console.error(err); return; }
       callback();
     });
   });
@@ -34,8 +36,8 @@ function clearPoints (callback) {
 function addUpPoints () {
   Person.find({}, ['id', 'first_name', 'last_name'], function(err, people) {
     if (err) { console.error(err); done(); return; }
-    var points = 0;
     async.forEachSeries(people, function(person, next) {
+      var points = 0;
       // find all correct guesses
       Vote.find({ voter: person._id })
       .populate('fragment')
