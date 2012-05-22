@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# profile: http://ogp.me/ns/profile#">
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- seo -->
+  <title>The Deception Game</title>
+  <meta name="description" content="a game to distinguish lies from truth" >
+  <meta name="keywords" content="meaning,language,lies,truth">
+  <!-- facebook open graph properties -->
+  <meta property="fb:app_id"          content="{{ fb_app_id }}" />
+  <meta property="og:type"            content="profile" />
+  <meta property="og:url"             content="{{ object_url }}" />
+  <meta property="og:title"           content="{{ name }}" />
+  <meta property="og:image"           content="{{ picture }}" />
+  <meta property="og:description"     content="{{ description }}" />
+  <meta property="profile:first_name" content="{{ first_name }}" />
+  <meta property="profile:last_name"  content="{{ last_name }}" />
+  <meta property="profile:username"   content="{{ username }}" />
+  <meta property="profile:gender"     content="{{ gender }}" />
+  <meta property="fb:profile_id"      content="{{ fb_id }}" />
+  <!-- google analytics -->
+  <script src="/scripts/analytics.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+  <!-- scripts -->
+  <script type="text/javascript" charset="utf-8">
+  console.log('hi');
+  </script>
+  Hi there, welcome to the profile of {{ name }}
+</body>
+</html>
