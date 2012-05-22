@@ -110,7 +110,7 @@
 
 })(window.Initers = {});
 
-// jquery dep
+// Points -- jquery dep
 (function(exports) {
 
   var pointSnippetStart, pointSnippetEnd, points, pointpairs, animationoptions;
@@ -234,8 +234,8 @@
     var increase, value;
     value = getPointValue();
     targetValue = value + Number(delta);
-    if (targetValue === value) { callback(); return; }
     persistPoints(targetValue);
+    if (targetValue === value) { callback(); return; }
     increase = targetValue > value;
     function recursive() {
       value = increase ? value + 1: value - 1;
