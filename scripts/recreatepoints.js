@@ -21,11 +21,21 @@ function done () {
   Store.quit();
 }
 
-function addUpPoints (argument) {
+function clearPoints (callback) {
+  Store.keys('*_points', function(err, replies) {
+    async.forEachSeries(replies, function(point, next) {
+      Store.del(point, next);
+    }, function(err) {
+      callback();
+    });
+  });
+}
+
+function addUpPoints () {
   Person.find({}, ['id', 'first_name', 'last_name'], function(err, people) {
     if (err) { console.error(err); done(); return; }
     var points = 0;
-    async.forEach(people, function(person, next) {
+    async.forEachSeries(people, function(person, next) {
       // find all correct guesses
       Vote.find({ voter: person._id })
       .populate('fragment')
@@ -60,5 +70,5 @@ function addUpPoints (argument) {
 }
 
 if (require.main === module) {
-  addUpPoints();
+  clearPoints(addUpPoints);
 }
