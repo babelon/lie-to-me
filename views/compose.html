@@ -36,7 +36,7 @@
     <div class="row">
       <section class="span8 offset2 message alert alert-block alert-{{ alert_type }}">
         <div class="span1 picture">
-          <img src="{{ picture }}">
+          {{#picture}}<img src="{{ picture }}">{{/picture}}
         </div>
         <div class="span6">
           <h4 class="alert-heading">{{ leader }}</h4>
@@ -49,7 +49,7 @@
     <div class="row">
       <section class="span8 offset2 message alert alert-block alert-{{ alert_type }}">
         <div class="span1 picture">
-          <img src="{{ picture }}">
+          {{#picture}}<img src="{{ picture }}">{{/picture}}
         </div>
         <div class="span6">
           <h4 class="alert-heading">{{ leader }}</h4>

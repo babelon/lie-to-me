@@ -41,7 +41,7 @@
     <div class="row summary">
       <div class="well message span8 offset2 {{feedback}}">
         <div class="span1 picture">
-          <img src="{{ picture }}">
+          {{#picture}}<img src="{{ picture }}">{{/picture}}
         </div>
         <div class="span6">
           <h4 class="heading">{{ leader }}</h4>

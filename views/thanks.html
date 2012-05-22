@@ -28,7 +28,7 @@
     <div class="row">
       <section class="span8 offset2 reply alert alert-block alert-{{ alert_type }}">
         <div class="span1 picture">
-          {{{ picture }}}
+          {{#picture}}<img src="{{ picture }}">{{/picture}}
         </div>
         <div class="span6">
           <h4 class="alert-heading">{{ leader }}</h4>
