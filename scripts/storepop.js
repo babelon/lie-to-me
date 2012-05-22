@@ -24,8 +24,6 @@ actions = [
   function(callback) { Store.sadd('leaders_right', [ 'Awesome!', 'Awesome!', 'Groovy!', 'Excellent!', 'Great!', 'Great!', 'Good job!', 'Fantastic!', 'Tubular!', 'Gnarly, dude!', 'Sweet!', 'Woo-hoo!', 'Hooray!', 'Splendid!', 'Fantastic!', 'Bravo!', 'Huzzah!', 'Well done!', 'Well done!' ], callback); },
   function(callback) { Store.sadd('leaders_wrong', [ 'Yikes!', 'Uh-oh!', 'Oops!', 'Whoops!', 'Gah!', 'Ouch!', 'Bummer!' ], callback); },
   function(callback) { Store.sadd('leaders_composed', ['Thanks!', 'Thank you!'], callback); },
-  function(callback) { Store.sadd('leaders_notification', ['Sneaky!', 'Cunning!', 'Wily Coyote!', 'Devious!', 'Shifty!'], callback); },
-  function(callback) { Store.sadd('leaders_summary', ['Guess what?', 'In other news..', 'And then:', 'In this case,'], callback); },
   function(callback) { Store.sadd('truth_guessed_truth', [ '<p>You called it. That was the genuine article.<br />{{{ author }}} was being sincere.</p>', '<p>You were right. {{{ author }}} was, in fact, telling the truth.</p>', '<p>{{{ author }}} was indeed being genuine.</p>' ], callback); },
   function(callback) { Store.sadd('truth_guessed_lies', [ "<p>A bit too paranoid, there.<br />{{{ author }}} was actually telling the truth.</p>", "<p>That was really an authentic statement from {{{ author }}}.</p>" ], callback); },
   function(callback) { Store.sadd('lies_guessed_truth', [ "<p>Don't believe everything you read.<br />{{{ author }}} has never even {{actioned}} {{{entity}}}!</p>", "<p>That was a scam. You fell right into {{{ author }}}'s trap!</p>" ], callback); },
@@ -35,8 +33,10 @@ actions = [
   function(callback) { Store.sadd('tweeners_right', [ 'Keep up the good work!', "Here's another:", "You're on a roll!", "Keep it up!" ], callback); },
   function(callback) { Store.sadd('tweeners_wrong', [ 'Better luck with this one...', 'Give it another shot...', 'Keep trying...', 'Try again...' ], callback); },
   function(callback) { Store.sadd('tweeners_transition', [ "And now for something completely different.", "Try this for a change." ], callback); },
-  function(callback) { Store.sadd('notification_failure', [ "<p>{{{ voter }}} saw through you, and correctly identified your deception about {{{ entity }}}!</p>", "<p>{{{ voter }}} discerned your fictional statement about {{{ entity }}}.</p>" ], callback); },
-  function(callback) { Store.sadd('notification_success', [ "<p>You got {{{ voter }}}!<br />{{ pronoun }} thought your deceptive statement about {{{ entity }}} was trustworthy.</p>", "<p>Gullible {{{ voter }}} fell for your trap!<br />{{ pronoun }} misclassified your deceptive statement about {{{ entity }}}.</p>" ], callback); }
+  function(callback) { Store.sadd('leaders_notification_failure', ['{{{ voter }}} saw through you!', '{{{ voter }}} out-discerned you.', '{{{ voter }}} got you!'], callback); },
+  function(callback) { Store.sadd('notification_failure', [ "<p>{{ pronoun }} correctly identified your deception about {{{ entity }}}!</p>", "<p>{{ pronoun }} caught your fictional statement about {{{ entity }}}.</p>" ], callback); },
+  function(callback) { Store.sadd('leaders_notification_success', ['Gullible {{{ voter }}} fell for your trap!', 'You got {{{ voter }}}!'], callback); },
+  function(callback) { Store.sadd('notification_success', [ "<p>{{ pronoun }} was out-foxed by your deceptive statement about {{{ entity }}}.</p>", "<p>{{ pronoun }} fell for your deceptive statement about {{{ entity }}}.</p>" ], callback); }
   // creating a hash map, args in format => { field1: val1, field2: val2 }
   // function(callback) { Store.hmset('reply_alert_type', { 'true': 'success', 'false': 'danger', 'composed': 'info', 'exhausted': 'warning' }, callback); }
 ];
