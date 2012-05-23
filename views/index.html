@@ -13,6 +13,7 @@
   <script src="/scripts/analytics.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
+  <!-- navbar -->
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
@@ -43,7 +44,25 @@
       </div>
     </div>
   </div>
+  <!-- settings dialog -->
+  <div id="settings" class="modal hide">
+    <div class="modal-header">
+      <button class="close" data-dismiss="modal">×</button>
+      <h3>Settings</h3>
+    </div>
+    <div class="modal-body">
+      <p>Change email</p>
+      <p>Send Updates</p>
+      <p>Post actions to Facebook</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="btn">Close</a>
+      <a href="#" class="btn btn-primary">Save changes</a>
+    </div>
+  </div>
+  <!-- page container -->
   <div class="container">
+    <!-- streak box -->
     {{#streak}}
     <div class="right-box pull-right">
       <div class="streak-box rounded-box">
@@ -82,7 +101,7 @@
   </div>
   <!-- scripts -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-  <script src="/scripts/underscore-min-1.3.3.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/scripts/addons.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="/scripts/index.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
