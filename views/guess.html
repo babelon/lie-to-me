@@ -27,6 +27,11 @@
           </li>
         </ul>
         <ul class="nav pull-right">
+          {{#streak}}
+          <li class="streak">
+            <span>{{streak}}</span>
+          </li>
+          {{/streak}}
           <li>
             <span>Score</span>
           </li>
@@ -96,14 +101,6 @@
   {{/person}}
   <!-- page container -->
   <div class="container">
-    {{#streak}}
-    <div class="right-box pull-right">
-      <div class="streak-box rounded-box">
-        <p>Guessing Streak</p>
-        <p class="streak-number">{{streak}}</p>
-      </div>
-    </div>
-    {{/streak}}
     {{#notification}}
     <div class="row">
       <section class="span8 offset2 message alert alert-block alert-{{ alert_type }}">
