@@ -117,6 +117,16 @@
     }
   };
 
+  exports.popups = function(domnode) {
+    var popuplinks;
+    popuplinks = domnode.querySelectorAll('.popup');
+    Array.prototype.forEach.call(popuplinks, function(popuplink) {
+      popuplink.addEventListener('click', function(ev) {
+        return Utilities.popup(ev.target.dataset.link, 400, 580);
+      });
+    });
+  };
+
 })(window.Initers = {});
 
 // Points -- jquery dep
@@ -262,5 +272,6 @@ $(document).ready(function() {
   Initers.buttons(document);
   Initers.stars(document);
   Initers.fragments(document);
+  Initers.popups(document);
   Points.setupPoints(document);
 });
