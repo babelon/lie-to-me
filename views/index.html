@@ -13,25 +13,45 @@
   <script src="/scripts/analytics.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
-  <div class="container">
-    {{#person}}
-    <div class="right-box pull-right">
-      <a class="btn auth-btn" href="/logout">
-        Logout
-      </a>
-      <div class="points-box rounded-box">
-        <span>Points</span>
-        <div class="points-holder" data-points="{{ points }}">
-        </div>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand pull-left" href="/">
+          The Deception Game
+        </a>
+        {{#person}}
+        <ul class="nav pull-right">
+          <li>
+            <span>Score</span>
+          </li>
+          <li>
+            <div class="points-holder" data-points="{{ points }}"></div>
+          </li>
+          <li class="divider-vertical"></li>
+          <li>
+            <a href="#" class="person">
+              <img src="{{picture}}">
+              <span>{{ name }}</span>
+            </a>
+          </li>
+          <li class="divider-vertical"></li>
+          <li>
+            <a href="/logout">Logout</a>
+          </li>
+        </ul>
+        {{/person}}
       </div>
-      {{#streak}}
+    </div>
+  </div>
+  <div class="container">
+    {{#streak}}
+    <div class="right-box pull-right">
       <div class="streak-box rounded-box">
         <p>Guessing Streak</p>
         <p class="streak-number">{{streak}}</p>
       </div>
-      {{/streak}}
     </div>
-    {{/person}}
+    {{/streak}}
     <div class="row">
       <section class="span8 offset2">
         <div class="hero-unit">

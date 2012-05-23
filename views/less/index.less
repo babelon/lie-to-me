@@ -3,10 +3,40 @@
 @import "bootstrap.less";
 @import "responsive.less";
 
-/* page layout */
-.container:first-child {
-  margin-top: 40px;
+/* navbar */
+
+.navbar .nav > li > a {
+  padding: 10px 10px 11px;
 }
+
+.navbar .nav > li > span {
+  float: none;
+  display: inline-block;
+  line-height: 19px;
+  padding: 10px 10px 11px;
+}
+
+.navbar .nav > li > a.person {
+  padding: 0;
+}
+
+.navbar .person span {
+  display: inline-block;
+  padding: 10px 5px 11px;
+}
+
+.navbar .person img {
+  width: 25px;
+  height: 25px;
+  padding: 4px 5px 5px;
+}
+
+/* page layout */
+
+body > .container {
+  padding-top: 60px;
+}
+
 
 /* reaction up top */
 
@@ -152,6 +182,14 @@
   text-align: center;
 }
 
+.right-box {
+  position: fixed;
+  top: 50px;
+  right: 60px;
+  width: @top-boxes-size;
+  text-align: center;
+}
+
 .streak-box {
   width: @top-boxes-size;
   margin-top: 10px;
@@ -163,30 +201,15 @@
   font-size: 20px;
 }
 
-.right-box {
-  position: fixed;
-  top: 50px;
-  right: 60px;
-  width: @top-boxes-size;
-  text-align: center;
-}
+/* points */
 
-.auth-btn {
-  width: 80px;
-}
-
-.points-box {
-  width: @top-boxes-size;
-  margin-top: 10px;
-  background-color: @grayDark;
-  color: @white;
-}
-
-.points-box .points-holder {
-}
-
-.points-box .points-surround {
+.points-holder {
   display: inline-block;
+}
+
+.points-holder > .points-surround {
+  display: inline-block;
+  color: @white;
   overflow: hidden;
   margin-left: 1px;
   margin-top: 5px;
@@ -196,7 +219,7 @@
   padding: 6px;
 }
 
-.points-box .points {
+.points-holder .points {
   display: inline-block;
   position: absolute;
   top: 0;
