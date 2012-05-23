@@ -41,6 +41,15 @@
   emptyFn = function() {};
   exports.emptyFn = emptyFn;
 
+  exports.popup = function(link, width, height) {
+    if (!window.focus) { return true; }
+    var href;
+    if (typeof link === 'string') { href = link; }
+    else { href = link.href; }
+    window.open(href, 'The Deception Game', 'width=' + String(width) + ',height=' + String(height) + ',scrollbars=yes');
+    return false;
+  };
+
 })(window.Utilities = {});
 
 // Handlers
