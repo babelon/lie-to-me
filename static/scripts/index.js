@@ -135,7 +135,7 @@
   var pointSnippetStart, pointSnippetEnd, points, pointpairs, animationoptions;
   pointSnippetStart = '<span class="points">';
   pointSnippetEnd = '</span>';
-  animationoptions = { 'easing': 'linear', 'duration': 200 };
+  animationoptions = { 'easing': 'linear', 'duration': 100 };
 
   function setupPoints (domnode) {
     var holder, value, digits, point, i;
