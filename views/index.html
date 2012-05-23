@@ -64,7 +64,7 @@
           <div class="control-group">
             <label class="control-label" for="settings-email">Email</label>
             <div class="controls">
-              <input type="email" name="email" id="settings-email" class="input-large" placeholder="you@example.com" value="{{email}}">
+              <input type="email" name="email" id="settings-email" class="input-large" placeholder="you@example.com" value="{{email}}" required>
               <p class="help-block">You can change your email address</p>
             </div>
           </div>
@@ -72,7 +72,7 @@
             <label class="control-label" for="settings-updates">Updates</label>
             <div class="controls">
               <label class="checkbox">
-                <input type="checkbox" name="updates" id="settings-updates" value="updates" {{#sendupdates}}checked{{/sendupdates}}>
+                <input type="checkbox" name="sendupdates" id="settings-updates" value="updates" {{#sendupdates}}checked{{/sendupdates}}>
                 Send occassional new updates to my email address
               </label>
             </div>
@@ -81,7 +81,7 @@
             <label class="control-label" for="settings-actions">Actions</label>
             <div class="controls">
               <label class="checkbox">
-                <input type="checkbox" name="actions" id="settings-actions" value="actions" {{#postactions}}checked{{/postactions}}>
+                <input type="checkbox" name="postactions" id="settings-actions" value="actions" {{#postactions}}checked{{/postactions}}>
                 Post actions to Facebook
               </label>
             </div>
