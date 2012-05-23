@@ -44,8 +44,14 @@ function rmthem () {
     }, function(err) {
       if (err) { console.error(err); return; quit(); }
       console.log('fragments to delete:', todeletefragments.length);
-      console.log('votes to delete:', todeletevotes.length);
-      quit();
+      Fragment.remove({ _id: { '$in': todeletefragments }}, function(err) {
+        if (err) { console.error(err); }
+        console.log('votes to delete:', todeletevotes.length);
+        Vote.remove({ _id: { '$in': todeletevotes }}, function(err) {
+          if (err) { console.error(err); }
+          quit();
+        })
+      });
     });
   });
 }
