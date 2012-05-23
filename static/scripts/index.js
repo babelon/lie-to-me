@@ -122,6 +122,7 @@
     popuplinks = domnode.querySelectorAll('.popup');
     Array.prototype.forEach.call(popuplinks, function(popuplink) {
       popuplink.addEventListener('click', function(ev) {
+        ev.target.dataset = ev.target.dataset || { link: ev.target.getAttribute('data-link') };
         return Utilities.popup(ev.target.dataset.link, 400, 580);
       });
     });
@@ -141,6 +142,7 @@
     var holder, value, digits, point, i;
     holder = domnode.querySelector('.points-holder');
     if (!holder) { return; }
+    holder.dataset = holder.dataset || { points: holder.getAttribute('data-points') };
     value = getPersistedPoints() || Number(holder.dataset.points);
     digits = String(value).split('');
     points = [];
