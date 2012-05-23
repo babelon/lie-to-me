@@ -50,6 +50,51 @@
       </div>
     </div>
   </div>
+  <!-- settings dialog -->
+  {{#person}}
+  <div id="settings" class="modal hide">
+    <div class="modal-header">
+      <button class="close" data-dismiss="modal">×</button>
+      <h3>Settings</h3>
+    </div>
+    <form class="form-horizontal" action="/profile" method="post" accept-charset="utf-8">
+      <fieldset>
+        <div class="modal-body">
+          <div class="control-group">
+            <label class="control-label" for="settings-email">Email</label>
+            <div class="controls">
+              <input type="email" name="email" id="settings-email" class="input-large" placeholder="you@example.com" value="{{email}}" required>
+              <p class="help-block">You can change your email address</p>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="settings-updates">Updates</label>
+            <div class="controls">
+              <label class="checkbox">
+                <input type="checkbox" name="sendupdates" id="settings-updates" value="updates" {{#sendupdates}}checked{{/sendupdates}}>
+                Send occassional new updates to my email address
+              </label>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="settings-actions">Actions</label>
+            <div class="controls">
+              <label class="checkbox">
+                <input type="checkbox" name="postactions" id="settings-actions" value="actions" {{#postactions}}checked{{/postactions}}>
+                Post actions to Facebook
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer form-actions">
+          <button class="btn" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  {{/person}}
+  <!-- page container -->
   <div class="container">
     {{#streak}}
     <div class="right-box pull-right">
