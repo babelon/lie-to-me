@@ -58,7 +58,7 @@
       <button class="close" data-dismiss="modal">×</button>
       <h3>Settings</h3>
     </div>
-    <form class="form-horizontal" action="/editperson" method="post" accept-charset="utf-8">
+    <form class="form-horizontal" action="/profile" method="post" accept-charset="utf-8">
       <fieldset>
         <div class="modal-body">
           <div class="control-group">
@@ -72,7 +72,7 @@
             <label class="control-label" for="settings-updates">Updates</label>
             <div class="controls">
               <label class="checkbox">
-                <input type="checkbox" name="updates" id="settings-updates" value="updates">
+                <input type="checkbox" name="updates" id="settings-updates" value="updates" {{#sendupdates}}checked{{/sendupdates}}>
                 Send occassional new updates to my email address
               </label>
             </div>
@@ -81,7 +81,7 @@
             <label class="control-label" for="settings-actions">Actions</label>
             <div class="controls">
               <label class="checkbox">
-                <input type="checkbox" name="actions" id="settings-actions" value="actions">
+                <input type="checkbox" name="actions" id="settings-actions" value="actions" {{#postactions}}checked{{/postactions}}>
                 Post actions to Facebook
               </label>
             </div>
