@@ -88,7 +88,7 @@
 
   exports.fragments = function(domnode) {
     // fragment word count
-    var fragment, wc, submit, throttled;
+    var fragment, wc, submit, limited;
     fragment = domnode.querySelector('textarea[name=fragment]');
     wc = domnode.querySelector('#word-count');
     submit = fragment && fragment.form.querySelector('button[type=submit]');
@@ -96,7 +96,7 @@
     minwords = 30;
     waittime = 300; // in ms
     if (fragment && wc) {
-      throttled = _.throttle(function(ev) {
+      function checkLength(ev) {
         var count = Utilities.countWords(fragment.value);
         Utilities.setText( wc, String(count) );
         if (count >= minwords) {
@@ -107,9 +107,10 @@
           fragment.parentElement.className = "control-group error";
           submit.disabled = 'disabled';
         }
-      }, waittime);
-      fragment.addEventListener('keyup', throttled);
-      Utilities.triggerEvent('keyup', fragment);
+      }
+      limited = _.debounce(checkLength, waittime);
+      fragment.addEventListener('keyup', limited);
+      checkLength(null);
     } else if (fragment || wc) {
       console.warn('Either fragment or word-count box is uninitialized.');
       console.warn(fragment);
