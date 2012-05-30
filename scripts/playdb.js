@@ -56,6 +56,41 @@ tests = {
         quit();
       });
     });
+  },
+  rmuglylinks: function() {
+    Person.update(
+    { profile_page: { '$regex': /\.com\/\d+/ } },
+    { profile_page: null },
+    { multi: true },
+    function(err) {
+      if (err) { console.error(err); quit(); return; }
+      console.log('All done');
+      quit();
+    });
+  },
+  linkfill: function() {
+    Person.find({ profile_page: null })
+    .exec(function(err, people) {
+      async.forEachSeries(people, function(person, next) {
+        Facebook.get_profile_info(
+        person.fb_id,
+        ['id', 'link'],
+        person.oauth_access_token,
+        function(err, info) {
+          if (err) { console.error(err); }
+          person.profile_page = info['link'] || 'https://www.facebook.com/' + person.fb_id;
+          person.save(function(err, saved) {
+            if (err) { console.error(err); next(); return; }
+            console.log('Saved', saved.name, '=>', saved.profile_page);
+            next();
+          });
+        });
+      }, function(err) {
+        if (err) { console.error(err); quit(); return; }
+        console.log('All done');
+        quit();
+      });
+    });
   }
 };
 
@@ -63,5 +98,7 @@ if (process.argv.length === 3 && process.argv[2] in tests) {
   tests[process.argv[2]]();
 } else {
   console.log('usage:', process.argv[0], path.basename(process.argv[1]), '<operation>');
+  console.log('valid operations:');
+  console.log(Object.keys(tests));
   process.exit(0);
 }
