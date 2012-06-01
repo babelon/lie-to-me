@@ -71,7 +71,10 @@ function removeUser (userid) {
                 // remove Person model itself
                 Person.remove({ _id: person._id }, function(err) {
                   if (err) { console.error(err); }
-                  quit();
+                  Store.del( String(person._id) + '_points', function(err) {
+                    if (err) { console.error(err); }
+                    quit();
+                  });
                 });
               });
             });
