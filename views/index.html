@@ -102,7 +102,14 @@
   </div>
   {{/person}}
   <!-- page container -->
-  <div class="container">
+  <div class="container" id="flow">
+    {{#person}}
+    <h1>Flow content</h1>
+    {{#frames}}
+    {{{ content }}}
+    {{/frames}}
+    {{/person}}
+    {{^person}}
     <div class="row">
       <section class="span8 offset2">
         <div class="hero-unit">
@@ -116,20 +123,14 @@
             and how deceptive you can be.
           </p>
           <p style="text-align: center; margin-top: 40px;">
-            {{#person}}
-            <a class="btn btn-large btn-primary" href="/guess">
-              start playing
-            </a>
-            {{/person}}
-            {{^person}}
             <a class="btn btn-primary btn-large" href="/login">
               Login with Facebook
             </a>
-            {{/person}}
           </p>
         </div>
       </section>
     </div>
+    {{/person}}
   </div>
   <!-- scripts -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
