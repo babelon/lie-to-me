@@ -62,13 +62,17 @@ function removeUser (userid) {
           if (err) { console.error(err); quit(); return; }
           Fragment.remove({ author: person._id }, function(err) {
             if (err) { console.error(err); }
-            // remove votes made
+            // remove votes made on removed fragments
             Vote.remove({ fragment: { '$in': fragment_ids }}, function(err) {
               if (err) { console.error(err); }
-              // remove Person model itself
-              Person.remove({ _id: person._id }, function(err) {
+              // remove votes made by person
+              Vote.remove({ voter: person._id }, function(err) {
                 if (err) { console.error(err); }
-                quit();
+                // remove Person model itself
+                Person.remove({ _id: person._id }, function(err) {
+                  if (err) { console.error(err); }
+                  quit();
+                });
               });
             });
           });
